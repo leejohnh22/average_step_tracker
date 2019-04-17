@@ -1,5 +1,5 @@
 # John Lee		4/11/2019
-# Last Update	4/13/2019
+# Last updated	4/16/2019
 # Program Exercise 6-12
 # Calculate the average of steps taken each month and print to standard out
 
@@ -13,19 +13,7 @@ import os
 
 # Define Constants
 MONTHS_IN_YEAR = 12
-DAYS_IN_JANUARY = 31
-DAYS_IN_FEBRUARY = 28
-DAYS_IN_MARCH = 31
-DAYS_IN_APRIL = 30
-DAYS_IN_MAY = 31
-DAYS_IN_JUNE = 30
-DAYS_IN_JULY = 31
-DAYS_IN_AUGUST = 31
-DAYS_IN_SEPTEMBER = 30
-DAYS_IN_OCTOBER = 31
-DAYS_IN_NOVEMBER = 30
-DAYS_IN_DECEMBER = 31
-DAYS_IN_YEAR = DAYS_IN_JANUARY + DAYS_IN_FEBRUARY + DAYS_IN_MARCH + DAYS_IN_APRIL + DAYS_IN_MAY + DAYS_IN_JUNE + DAYS_IN_JULY + DAYS_IN_AUGUST + DAYS_IN_SEPTEMBER + DAYS_IN_OCTOBER + DAYS_IN_NOVEMBER + DAYS_IN_DECEMBER
+DAYS_IN_YEAR = 365
 
 def main():
 	# Initialize variables
@@ -56,33 +44,33 @@ def main():
 
 	# Define dictionary that holds number of days for each month
 	days_in_month = {
-	1 : DAYS_IN_JANUARY,
-	2 : DAYS_IN_FEBRUARY,
-	3 : DAYS_IN_MARCH,
-	4 : DAYS_IN_APRIL,
-	5 : DAYS_IN_MAY,
-	6 : DAYS_IN_JUNE,
-	7 : DAYS_IN_JULY,
-	8 : DAYS_IN_AUGUST,
-	9 : DAYS_IN_SEPTEMBER,
-	10 : DAYS_IN_OCTOBER,
-	11 : DAYS_IN_NOVEMBER,
-	12 : DAYS_IN_DECEMBER
+	1 : 31,
+	2 : 28,
+	3 : 31,
+	4 : 30,
+	5 : 31,
+	6 : 30,
+	7 : 31,
+	8 : 31,
+	9 : 30,
+	10 : 31,
+	11 : 30,
+	12 : 31
 	}
 
 	cumulative_days_by_month = {
-	1 : DAYS_IN_JANUARY,
-	2 : DAYS_IN_JANUARY + DAYS_IN_FEBRUARY,
-	3 : DAYS_IN_JANUARY + DAYS_IN_FEBRUARY + DAYS_IN_MARCH,
-	4 : DAYS_IN_JANUARY + DAYS_IN_FEBRUARY + DAYS_IN_MARCH + DAYS_IN_APRIL,
-	5 : DAYS_IN_JANUARY + DAYS_IN_FEBRUARY + DAYS_IN_MARCH + DAYS_IN_APRIL + DAYS_IN_MAY,
-	6 : DAYS_IN_JANUARY + DAYS_IN_FEBRUARY + DAYS_IN_MARCH + DAYS_IN_APRIL + DAYS_IN_MAY + DAYS_IN_JUNE,
-	7 : DAYS_IN_YEAR - DAYS_IN_DECEMBER - DAYS_IN_NOVEMBER - DAYS_IN_OCTOBER - DAYS_IN_SEPTEMBER - DAYS_IN_AUGUST,
-	8 : DAYS_IN_YEAR - DAYS_IN_DECEMBER - DAYS_IN_NOVEMBER - DAYS_IN_OCTOBER - DAYS_IN_SEPTEMBER,
-	9 : DAYS_IN_YEAR - DAYS_IN_DECEMBER - DAYS_IN_NOVEMBER - DAYS_IN_OCTOBER,
-	10 : DAYS_IN_YEAR - DAYS_IN_DECEMBER - DAYS_IN_NOVEMBER,
-	11 : DAYS_IN_YEAR - DAYS_IN_DECEMBER,
-	12 : DAYS_IN_YEAR
+	1 : 31,
+	2 : 59,
+	3 : 90,
+	4 : 120,
+	5 : 151,
+	6 : 181,
+	7 : 212,
+	8 : 243,
+	9 : 273,
+	10 : 304,
+	11 : 334,
+	12 : 365
 	}
 
 	try:
@@ -132,6 +120,8 @@ def main():
 					day_count = 0
 					num_steps = 0
 					num_total_steps = 0
+			
+			# File Closed
 
 			# Format output
 			print()
@@ -147,9 +137,7 @@ def main():
 			# Print monthly averages to stdout
 			print_step_average_monthly(steps_in_month[1], steps_in_month[2], steps_in_month[3], steps_in_month[4], steps_in_month[5], steps_in_month[6], steps_in_month[7], steps_in_month[8], steps_in_month[9], steps_in_month[10], steps_in_month[11], steps_in_month[12])
 
-			# File Closed
-
-	# Raise exception if file does not exist
+	# Raise Exceptions
 	except FileNotFoundError:
 		print("%s not found. Please verify %s exists in this directory." % (text_file, text_file))
 
@@ -199,7 +187,5 @@ def print_step_average_monthly(jan_step_avg, feb_step_avg, mar_step_avg, apr_ste
 	print("\tNovember\t", format(nov_step_avg, ',.0f'))
 	print("\tDecember\t", format(dec_step_avg, ',.0f'))
 
-# Run program
 main()
-
 # END OF PROGRAM
